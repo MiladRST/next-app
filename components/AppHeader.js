@@ -37,7 +37,7 @@ function AppHeader() {
                         <a href="#AppPrize" title="جوایز">جوایز</a>
                     </li>
                     <li>
-                        <a href="#AppSponsors" title="داوران و سرمایه گذاران">
+                        <a href="#AppRefs" title="داوران و سرمایه گذاران">
                             داوران و سرمایه گذاران
                         </a>
                     </li>
