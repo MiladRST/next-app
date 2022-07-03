@@ -29,7 +29,7 @@ export const data = {
     ],
     sponsors: [
         { id: 1, name: 'تپسی', title: 'tap30', width: 78, height: 44, url: 'https://tapsi.ir' },
-        { id: 2, name: 'ایرانسل', title: 'irancell', width: 74, height: 15, url: 'https://irancell.ir' },
+        { id: 2, name: 'ایرانسل', title: 'irancell', width: 74, height: 56, url: 'https://irancell.ir' },
         { id: 3, name: 'اسنپ', title: 'snapp', width: 74, height: 22, url: 'https://snapp.ir' },
         { id: 4, name: 'صنعت، معدن و تجارت خراسان رضوی', title: 'sp2', width: 57, height: 53, url: 'https://khim.ir' },
         { id: 5, name: 'گروه نرم افزاری آموت', title: 'amoot', width: 78, height: 43, url: 'https://amootsoft.com' },
