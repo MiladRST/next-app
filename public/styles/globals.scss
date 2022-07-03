@@ -1,0 +1,926 @@
+@font-face {  font-family: "IRANYekanLight";  src: url("../fonts/IRANYekanLight.ttf") format("truetype"), url("../fonts/IRANYekanLight.ttf") format("truetype");  }
+@font-face {  font-family: "IRANYekanBold";  src: url("../fonts/IRANYekanBold.ttf") format("truetype"), url("../fonts/IRANYekanBold.ttf") format("truetype");  }
+@font-face {  font-family: "IRANYekanExtraBold";  src: url("../fonts/IRANYekanExtraBold.ttf") format("truetype"), url("../fonts/IRANYekanExtraBold.ttf") format("truetype");  }
+@font-face {  font-family: "IRANYekanBlack";  src: url("../fonts/IRANYekanBlack.ttf") format("truetype"), url("../fonts/IRANYekanBlack.ttf") format("truetype");  }
+@font-face {  font-family: "IRANYekanExtraBlack";  src: url("../fonts/IRANYekanExtraBlack.ttf") format("truetype"), url("../fonts/IRANYekanExtraBlack.ttf") format("truetype");  }
+@font-face {  font-family: "IRANYekanMedium";  src: url("../fonts/IRANYekanMedium.ttf") format("truetype"), url("../fonts/IRANYekanMedium.ttf") format("truetype");  }
+@font-face {  font-family: "IRANYekanRegular";  src: url("../fonts/IRANYekanRegular.ttf") format("truetype"), url("../fonts/IRANYekanRegular.ttf") format("truetype");  }
+@font-face {  font-family: "IRANSansFaNum";  src: url("../fonts/IRANSansWeb(FaNum).ttf") format("truetype"), url("../fonts/IRANSansWeb(FaNum).ttf") format("truetype");  }
+@font-face {  font-family: "IRANSansFaNumBold";  src: url("../fonts/IRANSansWeb(FaNum)_Bold.ttf") format("truetype"), url("../fonts/IRANSansWeb(FaNum)_Bold.ttf") format("truetype");  }
+
+@media(max-width: 992px) {
+  .container  {max-width: 95%!important}
+}
+//Root Color
+$layout-bg-color : #F0F9FF;
+$layout-color: #6669F1;
+$text-color: #4D596B;
+$fade-color: #A1AFC3;
+$transition: all 0.3s ease;
+$radius: 30px;
+//
+a { text-decoration: none}
+//Mixins
+@mixin horizontal-li {list-style-type: none;display: inline-block;}
+@mixin text-font {font-style: normal;font-weight: 400;font-size: 14px;color: $text-color;}
+@mixin image-fluid {max-width: 100%;height: auto;}
+@mixin flex-center { display: flex;justify-content: center;align-items: center}
+@mixin section-padding($n) {
+  padding-top: $n * 1px;
+}
+@mixin paragraph-font($n , $color , $font) {
+  font-family: $font;
+  font-size: $n * 1px;
+  color: $color;
+  text-align: justify;
+  line-height: 34px;
+}
+@mixin heading-font($n) {
+  font-family: IRANYekanExtraBlack;
+  font-size: $n * 1px;
+}
+@mixin custom-font($s , $t) {
+  font-size: $s * 1px;
+  font-family: $t;
+}
+@mixin simple-box {
+  border-radius: $radius;
+  background-color: #fff;
+  margin: 8px;
+  padding: 5px;
+}
+
+@mixin default-btn {
+  font-family: IRANYekanMedium;
+  font-size: 15px;
+  display: inline-block;
+  text-align: center;
+  padding: 10px 25px 11px 25px;
+  border-radius: $radius;
+  transition: $transition;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+html, body {
+  direction: rtl;
+  margin:0;
+  padding:0;
+  height:100%;
+  font-family: IRANYekanLight;
+  background-color: $layout-bg-color;
+  scroll-behavior: smooth;
+}
+#MainWrapper {
+ min-height:  calc(100vh - 107px);
+}
+// pre-define
+.prize_title.small { display: none;}
+// Header -> Nav
+#AppHeader {
+  position: relative;
+  z-index: 10;
+  .main_nav {
+    ul{
+      margin-top: 0;
+      padding: 40px 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      li {
+        @include horizontal-li;
+        @include text-font;
+        font-family: IRANYekanBold;
+        min-width: 150px;
+        text-align: center;
+        a {
+          color: $text-color;
+          transition: $transition;
+          &:hover {
+            opacity: 0.8;
+          }
+        }
+      }
+    }
+  }
+
+  .mobile_nav {
+    display: none;
+  }
+}
+//Hero -> Hero
+#AppHero {
+  min-height: 600px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  .container {
+    position: relative;
+    z-index: 9;
+  }
+  .hero_img {
+    position: absolute;
+    left: 0;
+    max-width: 100%!important;
+    @include image-fluid;
+  }
+  .hero_title {
+    @include custom-font(41 , IRANYekanExtraBlack );
+    line-height: 65px;
+    span { color: $layout-color}
+  }
+  .hero_description {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-family: IRANYekanMedium;
+    color: $text-color;
+  }
+  .register_btn {
+    @include default-btn;
+    background-color: $layout-color;
+    color: #fff;
+    border: 1px solid $layout-color;
+    box-shadow: 0px 25px 45px rgba(102, 105, 241, 0.29);
+    img {
+      margin-right: 8px;
+    }
+  }
+
+  .details_btn {
+    @include default-btn;
+    background-color: transparent;
+    color: $fade-color;
+    border: 1px solid $fade-color;
+    margin-right: 8px;
+    &:hover {
+      opacity: 1;
+      color: $layout-color;
+      border-color: $layout-color;
+    }
+  }
+}
+// Introduction
+#AppIntro {
+  @include section-padding(150);
+  .intro_title {
+    @include heading-font(22);
+    line-height: 38px;
+  }
+  .intro_img-wrapper {
+    text-align: center;
+    img {
+      max-width: 100%!important;
+    }
+  }
+  .intro_description {
+    @include paragraph-font(14 , $text-color , IRANYekanRegular);
+    margin-bottom: 40px;
+  }
+  .play_btn {
+    @include default-btn;
+    background-color: $layout-color;
+    color: #fff;
+    border: 1px solid $layout-color;
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 25px 45px rgba(102, 105, 241, 0.29);
+    span {
+      margin-right: 8px;
+    }
+
+  }
+  #intro_video {
+    width: 100%;
+    max-width: 500px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: $radius;
+    @include flex-center();
+    position: fixed;
+    top: -500px;
+    video {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+  #intro_video.active {
+    top: 50%;
+    right: 50%;
+  }
+}
+//Date and Time
+#AppDate {
+  @include section-padding(150);
+  .date_wrapper {
+    background-color: #fff;
+    border-radius: $radius;
+    padding: 15px;
+    .date_wrapper-box {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      min-height: 75px;
+      position: relative;
+      .date_icon {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+      }
+      .date_details {
+        display: flex;
+        flex-direction: column;
+        margin-right: 20px;
+        .date_details-title {
+          @include  custom-font(15 , IRANYekanExtraBold);
+          line-height: 25px;
+        }
+        .date_details-detail {
+          @include custom-font(13 , IRANYekanLight)
+        }
+      }
+      &:after {
+        content: '';
+        position: absolute;
+        width: 1px;
+        height: 90%;
+        top: 5%;
+        left: 0;
+        background-color: #EBEBEB;
+      }
+    }
+  }
+}
+//Countdown
+#AppCountdown {
+  background-color: $layout-color;
+  min-height: 75px;
+  border-radius: $radius;
+  @include flex-center;
+  ul{
+    padding: 0;
+    @include flex-center;
+    li{
+      @include horizontal-li;
+      min-width: 55px;
+      text-align: center;
+      div {
+        display: flex;
+        flex-direction: column;
+        .count_amount {
+          @include custom-font(22 , IRANSansFaNumBold);
+          color: #fff;
+        }
+        .count_label {
+          @include custom-font(13 , IRANYekanLight);
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+//Location
+#AppLocation {
+  @include section-padding(100);
+
+  #map {
+    @include flex-center;
+    background-image: url("../images/map.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    min-height: 400px;
+    filter: drop-shadow(0px 4px 45px rgba(76, 142, 208, 0.25));
+    border-radius: $radius;
+    border: 6px solid #fff;
+  }
+}
+//Fields
+#AppFields {
+  @include section-padding(100);
+  .fields_title {
+    @include heading-font(22);
+    text-align: center;
+  }
+  .field_box {
+    max-width: 98%;
+    margin: 15px auto;
+    padding: 25px;
+    background-color: transparent;
+    border: 1px solid #a1afc35c;
+    border-radius: $radius;
+    transition: $transition;
+    .field_box-head {
+      position: relative;
+      padding-right: 65px;
+      min-height: 65px;
+      display: flex;
+      align-items: center;
+      .field_box-icon{
+        position: absolute;
+        right: 0px;
+        @include flex-center;
+        width: 60px;
+        height: 60px;
+        border-radius: 20px;
+        background-color: #fff;
+        transition: $transition;
+        img {
+          transition: $transition;
+        }
+      }
+      .field_box-title{
+        @include custom-font(16 , IRANYekanExtraBold);
+        margin-right: 10px;
+      }
+    }
+    p {
+      text-align: justify;
+      font-family: IRANYekanRegular;
+      font-size: 14px;
+      color: $fade-color;
+      min-height: 74px;
+    }
+    &:hover {
+      background-color: #fff;
+      border-color: #fff;
+      filter: drop-shadow(0px 4px 45px rgba(76, 142, 208, 0.25));
+      .field_box-icon {
+        background-color: $layout-color;
+        img {
+          filter: brightness(0) invert(1);
+        }
+      }
+    }
+  }
+}
+//Prize
+#AppPrize {
+  @include section-padding(100);
+
+  .prize_title {
+    @include custom-font(22 , IRANYekanExtraBlack);
+  }
+  .prize_img-wrapper {
+    text-align: center;
+    position: relative;
+    .name_on_cup {
+      display: block;
+      white-space: nowrap;
+      font-size: 11px;
+      position: absolute;
+      z-index: 10;
+      top: 8%;
+      right: 49%;
+      transform: translate(50% , 0) rotate3d(1 , 1 , 1 , -5deg);
+      max-width: 40px;
+      overflow: hidden;
+    }
+    img {
+      max-width: 100%!important;
+    }
+  }
+
+  ul {
+    padding: 0;
+    li {
+      list-style-type: none;
+      .prize_box {
+        position: relative;
+        padding-right: 60px;
+        padding-left: 25px;
+        min-height: 80px;
+        display: inline-flex;
+        align-items: center;
+        margin-bottom: 20px;
+        border-radius: $radius;
+        background-color: transparent;
+        transform: $transition;
+        &:hover {
+          background-color: #fff;
+        }
+      }
+
+      .prize_num {
+        @include flex-center;
+        @include  custom-font(25 , IRANSansFaNumBold);
+        color: #fff;
+        width: 44px;
+        height: 44px;
+        border-radius: 100%;
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translate(0 , -50%);
+        background-color: $layout-color;
+        filter: drop-shadow(0px 4px 45px rgba(76, 142, 208, 0.25));
+      }
+      .prize_label {
+        @include custom-font(20 , IRANYekanBold);
+        color: $fade-color;
+        margin-right: 15px;
+        margin-left: 10px;
+      }
+      .prize_gift {
+        @include custom-font(25 , IRANYekanBlack);
+        color: $layout-color;
+        
+      }
+      .prize_rest {
+        @include custom-font(25 , IRANYekanBlack);
+      }
+      
+      .prize_input {
+        padding-right: 15px;
+        input {
+          width: 100%;
+          max-width: 350px;
+          @include custom-font(15 , IRANYekanRegular);
+          height: 45px;
+          border-radius: $radius;
+          background-color: transparent;
+          border: 1px solid $layout-color;
+          padding: 0 15px;
+          &::placeholder {
+            color: $fade-color;
+          }
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+
+    }
+  }
+}
+//Refs
+#AppRefs {
+  @include section-padding(100);
+  .refs_title {
+    @include heading-font(22);
+    text-align: center;
+    margin-bottom: 35px;
+  }
+  .refs_list {
+    padding-inline-start: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px , 1fr));
+    li {
+      list-style-type: none;
+      margin: 8px;
+      .refs_list-box {
+        position: relative;
+        width: 100%;
+        min-height: 160px;
+        background-color: #fff;
+        border-radius: $radius;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: $transition;
+        .ref_box-hover {
+          opacity: 0;
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          @include flex-center();
+          border-radius: $radius;
+          background: #8fc1ee6e;
+          backdrop-filter: blur( 9.5px );
+          -webkit-backdrop-filter: blur( 9.5px );
+          transition: opacity 0.3s ease;
+          a {
+            @include flex-center();
+            border-radius: 50%;
+            width: 38px;
+            height: 38px;
+            background-color: #fff;
+            margin: 3px;
+          }
+        }
+        &:hover{
+          transform: scale(1.05) translateY(-8px);
+          .ref_box-hover {
+            opacity: 1;
+          }
+            
+        }
+        .refs_list-name {
+          font-family: IRANYekanExtraBold;
+          margin: 5px auto;
+        }
+        .refs_list-title{
+          @include custom-font(12 , IRANYekanLight)
+        }
+      }
+    }
+  }
+}
+//Sponsors
+.sponsor_section {
+  background-image: url("../images/sponsorbg.svg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-bottom: 200px;
+}
+#AppSponsors {
+  @include section-padding(100);
+  .sponsors_title {
+    @include heading-font(22);
+    text-align: center;
+    margin-bottom: 35px;
+  }
+  .sponsors_list {
+    padding-inline-start: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(135px , 1fr));
+    li {
+      list-style-type: none;
+      margin: 8px;
+      a{
+        @include flex-center;
+        background-color: #fff;
+        border-radius: $radius;
+        padding: 5px;
+        width: 100%;
+        min-height: 105px;
+        transition: $transition;
+        img {
+          max-width: 100%;
+          height: auto;
+          filter: grayscale(1);
+          transition: $transition;
+          
+        }
+        &:hover {
+          transform: scale(1.05) translateY(-8px);
+          img {
+            filter: grayscale(0);
+          }  
+        }
+      }
+    }
+  }
+}
+//Footer
+#AppFooter {
+  ul {
+    padding: 0 15px;
+    max-width: 100%;
+    text-align: center;
+    li {
+      @include horizontal-li;
+      a{
+        width: 35px;
+        height: 35px;
+        border-radius: 10px;
+        margin: 0 10px;
+        color: $fade-color;
+        border: 2px solid $fade-color;
+        transition: $transition;
+        @include flex-center;
+        img {
+          filter: grayscale(1);
+          opacity: 0.7;
+          transition: $transition;
+        }
+        &:hover {
+          border-color: $layout-color;
+          img {
+            filter: grayscale(0);
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+  p {
+    @include paragraph-font(12 , $text-color , IRANYekanRegular);
+    text-align: center;
+  }
+}
+//404 page
+#custom404 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  img {
+    max-width: 450px!important;
+    height: auto;
+    filter: grayscale(1);
+    opacity: 0.8;
+  }
+  h1 {
+    @include custom-font(22 , IRANYekanExtraBold);
+    color: $text-color;
+  }
+  button {
+    @include default-btn;
+    background-color: $layout-color;
+    color: #fff;
+    border: 1px solid $layout-color;
+    box-shadow: 0px 25px 45px rgba(102, 105, 241, 0.29);
+    a {color: #fff}
+  }
+}
+// login & registe
+#AppLogin , #AppRegister {
+  min-height: calc(100vh - 265px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 15px;
+  background-image: url('../images/sponsorbg.svg');
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
+}
+.lr_box {
+    width: 100%;
+    max-width: 440px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: $radius;
+    background-color: #FFF;
+    box-shadow: 0px 6px 20px rgb(111 152 241 / 33%);
+    .lr_logo {
+      text-align: center;
+    }
+    .lr_title {
+      text-align: center;
+    }
+    .lr_form-group {
+      display: block;
+      margin-bottom: 30px;
+    }
+    .lr_sign_login {
+      a {
+        margin: 0 5px;
+        display: inline-block;
+        color: $layout-color;
+        @include custom-font(16, IRANYekanBold);
+
+      }
+    }
+    label {
+      display: inline-block;
+      margin-bottom: 8px;
+      @include custom-font(16, IRANYekanMedium )
+    }
+    input.lr_input {
+      width: 100%;
+      height: 40px;
+      border: none;
+      @include custom-font( 15 , IRANYekanMedium );
+      border-bottom: 2px solid $fade-color;
+      transition: $transition;
+      &:focus{
+        outline: none;
+        border-color: $layout-color;
+      }
+      &::placeholder {
+        @include custom-font( 14 , IRANYekanMedium );
+        color: $fade-color;
+        text-align: right
+      }
+      
+    }
+    .lr_btn {
+      @include default-btn();
+      width: 100%;
+      border: 1px solid transparent;
+      background-color: $layout-color;
+      color: #fff;
+    }
+}
+
+input[type="email"] , input[type="password"] {
+  direction: ltr;
+  text-align: left;
+}
+
+
+//Responsive
+@media(max-width: 1250px) {
+  #AppHero {
+    min-height: 500px;
+    .hero_img {
+      max-width: 50%!important;
+    }
+    .hero_description {
+      max-width: 80%;
+    }
+
+  }
+}
+@media(max-width: 991px) {
+
+  #AppHero {
+    min-height: 400px;
+    .hero_img {
+      opacity: 0.4;
+    }
+  }
+
+  #AppIntro {
+    @include section-padding(50);
+    .intro_img-wrapper {
+      margin-top: 40px;
+    }
+
+  }
+  #AppDate {
+    @include section-padding(100);
+  }
+
+  #AppDate .date_wrapper .date_wrapper-box:after {
+    display: none;
+  }
+  #AppFields {
+    .field_box {
+      p {
+        min-height: 75px;
+      }
+    }
+  }
+}
+@media(max-width: 768px) {
+
+  #AppHeader {
+    .main_nav {
+      display: none;
+    }
+    .mobile_nav {
+      position: relative;
+      z-index: 10;
+      display: block;
+      padding: 15px;
+      button {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+      }
+      #sidebar_menu {
+        padding: 0;
+        width: 280px;
+        margin: 0;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: -350px;
+        background-color: #fff;
+        box-shadow: 0px 6px 20px rgb(111 152 241 / 33%);
+        transition: right 0.3s ease;
+        li {
+          list-style-type: none;
+          padding: 15px;
+          position: relative;
+          border-bottom: 1px solid #eaeaea;
+          @include custom-font(13, IRANYekanBlack);
+          a {
+            color: $text-color;
+            transition: $transition;
+            &:hover {
+              color: $layout-color;
+            }
+          } 
+          &:first-child{
+            position: relative;
+            display: flex;
+            align-items: center;
+            button {
+              cursor: pointer;
+              position: absolute;
+              left: 15px;
+              top: 27px;
+            }
+          }
+        }
+
+      }
+      #sidebar_menu.active {
+        right: 0;
+      }
+    }
+    #sidebar_backdrop {
+      position: fixed;
+      z-index: 9;
+      top: 0;
+      right: -150%;
+      width: 100%;
+      height: 100%;
+      background: hsla(0,0%,100%,.2);
+      backdrop-filter: blur(9.5px);
+      -webkit-backdrop-filter: blur(9.5px);
+      border: 1px solid hsla(0,0%,100%,.18);
+    }
+    #sidebar_backdrop.active {
+      right: 0;
+    }
+  }
+  #AppHero {
+    .hero_img {
+      max-width: 100%!important;
+    }
+    .hero_title {
+      font-size: 32px;
+    }
+  }
+
+  #AppDate .date_wrapper .date_wrapper-box:after {
+    display: block;
+    width: 80%;
+    height: 1px;
+    top: 100%;
+    right: 10%;
+
+  }
+  #AppCountdown{
+    margin-top: 10px;
+  }
+  #AppPrize {
+    .prize_num, .prize_label , .prize_gift , .prize_rest  {
+        font-size: 18px!important;
+    }
+
+  }
+  #AppFields {
+    .field_box {
+      p {
+        min-height: 50px;
+      }
+    }
+  }
+}
+@media (max-width: 475px) {
+  #AppHero {
+    .hero_title {
+      font-size: 25px;
+    }
+  }
+   #AppPrize {
+     @include section-padding(50);
+     .prize_title {display: none;}
+     .prize_title.small {display: block!important;}
+     .prize_box {
+       padding-right: 30px!important;
+       display: flex!important;
+       flex-direction: column!important;
+     }
+     .prize_num {
+       width: 32px!important;
+       height: 32px!important;
+       right: 0!important;
+       display: none!important;
+     }
+    .prize_num, .prize_label , .prize_gift , .prize_rest  {
+        font-size: 19px!important;
+    }
+    .prize_input {
+      padding-right: 0!important;
+      text-align: center!important;
+    }
+    .prize_img-wrapper .name_on_cup {
+      font-size: 10px!important;
+      top:7%!important;
+    }
+
+  }
+  .intro_title , .fields_title, .prize_title {
+    font-size: 18px!important;
+    text-align: center!important;
+  }
+}
+@media (max-width: 380px) {
+  #AppHero {
+    .hero_title {
+      font-size: 20px;
+    }
+  }
+  #AppPrize {
+    .prize_img-wrapper {
+      .name_on_cup  {
+          font-size: 9px!important;
+      }
+      
+     
+    }
+  }
+  
+
+  
+  
+
+
+}
+
+
